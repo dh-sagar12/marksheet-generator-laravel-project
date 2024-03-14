@@ -31,9 +31,9 @@ class StudentController extends Controller
             'date_of_joined' => ['required', 'date'],
         ]);
 
-        $request->merge(['created_by' => auth()-> user()->id]);
-        Student::create($request->all() );
-    
+        $request->merge(['created_by' => auth()->user()->id]);
+        Student::create($request->all());
+
         return redirect()->route('student.all')->with('success', 'Student created successfully.');
     }
 
@@ -58,5 +58,21 @@ class StudentController extends Controller
         return redirect()->route('student.all')->with('success', 'Student updated successfully.');
     }
 
+    public function get_students_api(Request $request)
+    {
+        $query =   Student::query();
 
+        if ($request->has('name')) {
+            $query->where('full_name', 'like', '%' . $request->input('name') . '%');
+        }
+
+        $student  =  $query->get();
+
+        return response()->json($student);
+    }
+    public function get_single_student_api(Request $request, Student $id)
+    {
+        return response()->json($id);
+
+    }
 }

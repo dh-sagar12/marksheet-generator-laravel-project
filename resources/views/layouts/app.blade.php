@@ -33,7 +33,7 @@
         @include('layouts.navigation')
         <div class="flex">
             @include('layouts.sidebar')
-            <main class="dark:bg-gray-800  border-gray-100 h-[91vh] w-screen m-4">
+            <main class="dark:bg-gray-800  border-gray-100 h-[91vh] overflow-auto w-screen m-4">
                 {{ $slot }}
             </main>
         </div>

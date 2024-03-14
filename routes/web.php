@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Student\MarksheetController;
 use App\Http\Controllers\Student\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,14 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::post('/students', [StudentController::class, 'store']) -> name('student.create');
     Route::get('/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
     Route::put('/student/{student}', [StudentController::class, 'update'])->name('student.update');
+});
+
+Route::middleware(['auth', 'verified'])->group(function() {
+    Route::delete('/marksheet/delete/{marksheet}', [MarksheetController::class, 'delete_marksheet']) -> name('marksheet.delete');
+    Route::get('/marksheet/new', [MarksheetController::class, 'create']) -> name('marksheet.new');
+    Route::post('/marksheet', [MarksheetController::class, 'store']) -> name('marksheet.store');
+    Route::get('/marksheet', [MarksheetController::class, 'index']) -> name('marksheet.all');
+    Route::get('/marksheet/download/{marksheet}', [MarksheetController::class, 'generate_marksheet']) -> name('marksheet.pdf');
 });
 
 require __DIR__.'/auth.php';

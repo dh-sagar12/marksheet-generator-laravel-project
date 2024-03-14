@@ -4,7 +4,7 @@
         <ul class=" py-5">
 
             <a href="/">
-                <li class="text-xl p-3 my-2 w-full  space-x-2 font-semibold hover:bg-gray-700 hover:">
+                <li class="text-xl p-3 my-2 w-full  space-x-2 font-semibold hover:bg-gray-700 ">
                     <i class="fa-solid fa-gauge"></i>
                     <span> Dashboard </span>
                 </li>
@@ -20,11 +20,11 @@
 
 
 
-            <a href="">
+            <a href="{{ route('marksheet.all') }}">
 
                 <li class="text-xl p-3 my-2 w-full space-x-2 font-semibold hover:bg-gray-700">
                     <i class="fa-solid fa-sheet-plastic"></i>
-                    <span>Create Marksheet</span>
+                    <span>Marksheets</span>
                 </li>
             </a>
 
